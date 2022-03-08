@@ -11,3 +11,6 @@ Initial release.
 ## v1.1
 Added montser icon names, for Diva quest.  
 Fixed Diva quest load issue.
+
+## v1.1
+Fixed header type issue.
