@@ -35,7 +35,6 @@ namespace mhf_questlists_reader
                 numQuestCount.Value = QuestCount;
 
                 int prevPointer = 8;
-                int prevNum = 256;
                 for (int i = 0; i < QuestCount; i++)
                 {
                     byte[] questHeaderData0 = bydata.Skip(prevPointer).Take(16).ToArray();
@@ -47,35 +46,56 @@ namespace mhf_questlists_reader
 
                     int pTitleAndName = BitConverter.ToInt32(questData0, 320);
                     int pMainoObj = BitConverter.ToInt32(questData0, 324);
-                    int pAObj = BitConverter.ToInt32(questData0, 328);
-                    int pBObj = BitConverter.ToInt32(questData0, 332);
-                    int pClearC = BitConverter.ToInt32(questData0, 336);
-                    int pFailC = BitConverter.ToInt32(questData0, 340);
-                    int pEmp = BitConverter.ToInt32(questData0, 344);
-                    int pText = BitConverter.ToInt32(questData0, 348);
 
                     string tTitleAndName = Encoding.GetEncoding("Shift_JIS").GetString(questData0.Skip(pTitleAndName).Take(pMainoObj - pTitleAndName).ToArray()).Replace("\n", "\r\n");
-
                     listBox1.Items.Add(tTitleAndName);
 
+                    //クエストの読み込みが一番最後のクエストまで達していないなら
+                    //クエストデータの最後から一バイトずつ読み取り
+                    //0が２回出てきたらforを中断
+                    //末尾の最期をpointerとして返す　
+                    //int prevNum = 0;
+                    //bool zeroAppered = false;
+                    //if (i == QuestCount - 1)
+                    //{
+
+                    //}
+                    //else
+                    //{
+                    //    int t1 = 0;     //末尾から読み取った回数
+                    //    for (int t = 0; t < 100; t++)
+                    //    {
+                    //        int singleByte = bydata[prevPointer + 16 + quest1Length + t];
+                    //        if (singleByte == prevNum & singleByte == 0)
+                    //        {
+                    //            t1 = t + 1;
+                    //            break;
+                    //        }
+                    //        prevNum = singleByte;
+                    //    }
+                    //    prevPointer = prevPointer + 16 + quest1Length + t1;
+                    //}
+
+                    int t1 = 0;
                     if (i == QuestCount - 1)
                     {
 
                     }
                     else
                     {
-                        int t1 = 0;
-                        for (int t = 0; t < 100 + t; t++)
+                        for (int t = 1; t < 250; t++)
                         {
-                            int singleByte = bydata[prevPointer + 16 + quest1Length + t];
-                            if (singleByte == prevNum & singleByte == 0)
+                            int singleByte = bydata[prevPointer + 16 + quest1Length + t];           //末尾の最初から
+                            if (singleByte == 64)
                             {
-                                t1 = t + 1;
-                                break;
+                                if (bydata[prevPointer + 16 + quest1Length + t+1] == 1)
+                                {
+                                    t1 = prevPointer + 16 + quest1Length + t - 56;
+                                    break;
+                                }
                             }
-                            prevNum = singleByte;
                         }
-                        prevPointer = prevPointer + 16 + quest1Length + Convert.ToByte(t1);
+                        prevPointer = t1;
                     }
                 }
             }
@@ -145,6 +165,20 @@ namespace mhf_questlists_reader
             numQuantityM.Value = BitConverter.ToInt16(byteData, 54);
             numQuantityA.Value = BitConverter.ToInt16(byteData, 62);
             numQuantityB.Value = BitConverter.ToInt16(byteData, 70);
+
+            List.MonsterID.TryGetValue(byteData[185], out string Icon1);
+            List.MonsterID.TryGetValue(byteData[186], out string Icon2);
+            List.MonsterID.TryGetValue(byteData[187], out string Icon3);
+            List.MonsterID.TryGetValue(byteData[188], out string Icon4);
+            List.MonsterID.TryGetValue(byteData[189], out string Icon5);
+
+            textMonsterIcon1.Text = Icon1;
+            textMonsterIcon2.Text = Icon2;
+            textMonsterIcon3.Text = Icon3;
+            textMonsterIcon4.Text = Icon4;
+            textMonsterIcon5.Text = Icon5;
+
+
 
             //Text
             int pTitleAndName = BitConverter.ToInt16(byteData, 320);

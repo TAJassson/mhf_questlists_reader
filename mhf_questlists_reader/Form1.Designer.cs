@@ -31,7 +31,6 @@
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textbox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comMark = new System.Windows.Forms.ComboBox();
             this.comQuestType = new System.Windows.Forms.ComboBox();
@@ -116,6 +115,12 @@
             this.label23 = new System.Windows.Forms.Label();
             this.numDifficulty = new System.Windows.Forms.NumericUpDown();
             this.label22 = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.textMonsterIcon1 = new System.Windows.Forms.TextBox();
+            this.textMonsterIcon2 = new System.Windows.Forms.TextBox();
+            this.textMonsterIcon3 = new System.Windows.Forms.TextBox();
+            this.textMonsterIcon4 = new System.Windows.Forms.TextBox();
+            this.textMonsterIcon5 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPlayers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuestCount)).BeginInit();
@@ -141,6 +146,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuestID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDifficulty)).BeginInit();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOpenFile
@@ -167,13 +173,6 @@
             this.listBox1.Size = new System.Drawing.Size(284, 574);
             this.listBox1.TabIndex = 1;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
-            // textbox
-            // 
-            this.textbox.Location = new System.Drawing.Point(93, 600);
-            this.textbox.Name = "textbox";
-            this.textbox.Size = new System.Drawing.Size(100, 23);
-            this.textbox.TabIndex = 3;
             // 
             // groupBox1
             // 
@@ -357,12 +356,13 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.groupBox8);
             this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Location = new System.Drawing.Point(302, 118);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1015, 244);
+            this.groupBox2.Size = new System.Drawing.Size(1015, 309);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Targets";
@@ -1129,9 +1129,9 @@
             this.groupBox6.Controls.Add(this.textClear);
             this.groupBox6.Controls.Add(this.label14);
             this.groupBox6.Controls.Add(this.textTitle);
-            this.groupBox6.Location = new System.Drawing.Point(302, 368);
+            this.groupBox6.Location = new System.Drawing.Point(302, 433);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1015, 303);
+            this.groupBox6.Size = new System.Drawing.Size(1015, 238);
             this.groupBox6.TabIndex = 6;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Text";
@@ -1156,7 +1156,7 @@
             // 
             // label19
             // 
-            this.label19.Location = new System.Drawing.Point(524, 113);
+            this.label19.Location = new System.Drawing.Point(528, 22);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(119, 23);
             this.label19.TabIndex = 25;
@@ -1165,7 +1165,7 @@
             // 
             // label18
             // 
-            this.label18.Location = new System.Drawing.Point(524, 83);
+            this.label18.Location = new System.Drawing.Point(26, 203);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(119, 23);
             this.label18.TabIndex = 24;
@@ -1174,7 +1174,7 @@
             // 
             // label17
             // 
-            this.label17.Location = new System.Drawing.Point(524, 53);
+            this.label17.Location = new System.Drawing.Point(26, 173);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(119, 23);
             this.label17.TabIndex = 23;
@@ -1183,7 +1183,7 @@
             // 
             // textText
             // 
-            this.textText.Location = new System.Drawing.Point(659, 113);
+            this.textText.Location = new System.Drawing.Point(663, 23);
             this.textText.Multiline = true;
             this.textText.Name = "textText";
             this.textText.Size = new System.Drawing.Size(165, 176);
@@ -1205,14 +1205,14 @@
             // 
             // textEmp
             // 
-            this.textEmp.Location = new System.Drawing.Point(659, 83);
+            this.textEmp.Location = new System.Drawing.Point(161, 203);
             this.textEmp.Name = "textEmp";
             this.textEmp.Size = new System.Drawing.Size(316, 23);
             this.textEmp.TabIndex = 19;
             // 
             // textFail
             // 
-            this.textFail.Location = new System.Drawing.Point(659, 53);
+            this.textFail.Location = new System.Drawing.Point(161, 173);
             this.textFail.Name = "textFail";
             this.textFail.Size = new System.Drawing.Size(316, 23);
             this.textFail.TabIndex = 18;
@@ -1235,7 +1235,7 @@
             // 
             // label15
             // 
-            this.label15.Location = new System.Drawing.Point(524, 22);
+            this.label15.Location = new System.Drawing.Point(26, 143);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(119, 23);
             this.label15.TabIndex = 15;
@@ -1244,7 +1244,7 @@
             // 
             // textClear
             // 
-            this.textClear.Location = new System.Drawing.Point(659, 22);
+            this.textClear.Location = new System.Drawing.Point(161, 143);
             this.textClear.Name = "textClear";
             this.textClear.Size = new System.Drawing.Size(316, 23);
             this.textClear.TabIndex = 14;
@@ -1685,6 +1685,55 @@
             this.label22.Text = "Difficulty:";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.textMonsterIcon5);
+            this.groupBox8.Controls.Add(this.textMonsterIcon4);
+            this.groupBox8.Controls.Add(this.textMonsterIcon3);
+            this.groupBox8.Controls.Add(this.textMonsterIcon2);
+            this.groupBox8.Controls.Add(this.textMonsterIcon1);
+            this.groupBox8.Location = new System.Drawing.Point(6, 229);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(996, 74);
+            this.groupBox8.TabIndex = 15;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Icons";
+            // 
+            // textMonsterIcon1
+            // 
+            this.textMonsterIcon1.Location = new System.Drawing.Point(54, 31);
+            this.textMonsterIcon1.Name = "textMonsterIcon1";
+            this.textMonsterIcon1.Size = new System.Drawing.Size(151, 23);
+            this.textMonsterIcon1.TabIndex = 56;
+            // 
+            // textMonsterIcon2
+            // 
+            this.textMonsterIcon2.Location = new System.Drawing.Point(241, 31);
+            this.textMonsterIcon2.Name = "textMonsterIcon2";
+            this.textMonsterIcon2.Size = new System.Drawing.Size(151, 23);
+            this.textMonsterIcon2.TabIndex = 57;
+            // 
+            // textMonsterIcon3
+            // 
+            this.textMonsterIcon3.Location = new System.Drawing.Point(427, 31);
+            this.textMonsterIcon3.Name = "textMonsterIcon3";
+            this.textMonsterIcon3.Size = new System.Drawing.Size(151, 23);
+            this.textMonsterIcon3.TabIndex = 58;
+            // 
+            // textMonsterIcon4
+            // 
+            this.textMonsterIcon4.Location = new System.Drawing.Point(615, 31);
+            this.textMonsterIcon4.Name = "textMonsterIcon4";
+            this.textMonsterIcon4.Size = new System.Drawing.Size(151, 23);
+            this.textMonsterIcon4.TabIndex = 59;
+            // 
+            // textMonsterIcon5
+            // 
+            this.textMonsterIcon5.Location = new System.Drawing.Point(800, 31);
+            this.textMonsterIcon5.Name = "textMonsterIcon5";
+            this.textMonsterIcon5.Size = new System.Drawing.Size(151, 23);
+            this.textMonsterIcon5.TabIndex = 60;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1694,7 +1743,6 @@
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textbox);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnOpenFile);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -1731,8 +1779,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuestID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDifficulty)).EndInit();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1741,7 +1790,6 @@
         private Button btnOpenFile;
         private OpenFileDialog openFileDialog1;
         private ListBox listBox1;
-        private TextBox textbox;
         private GroupBox groupBox1;
         private ComboBox comMark;
         private ComboBox comQuestType;
@@ -1826,5 +1874,11 @@
         private TextBox textTypeB;
         private TextBox textTypeA;
         private TextBox textTypeM;
+        private GroupBox groupBox8;
+        private TextBox textMonsterIcon5;
+        private TextBox textMonsterIcon4;
+        private TextBox textMonsterIcon3;
+        private TextBox textMonsterIcon2;
+        private TextBox textMonsterIcon1;
     }
 }
