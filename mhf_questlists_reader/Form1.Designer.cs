@@ -41,6 +41,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.textMonsterIcon5 = new System.Windows.Forms.TextBox();
+            this.textMonsterIcon4 = new System.Windows.Forms.TextBox();
+            this.textMonsterIcon3 = new System.Windows.Forms.TextBox();
+            this.textMonsterIcon2 = new System.Windows.Forms.TextBox();
+            this.textMonsterIcon1 = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.textTypeB = new System.Windows.Forms.TextBox();
             this.comTargetB = new System.Windows.Forms.ComboBox();
@@ -115,16 +121,11 @@
             this.label23 = new System.Windows.Forms.Label();
             this.numDifficulty = new System.Windows.Forms.NumericUpDown();
             this.label22 = new System.Windows.Forms.Label();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.textMonsterIcon1 = new System.Windows.Forms.TextBox();
-            this.textMonsterIcon2 = new System.Windows.Forms.TextBox();
-            this.textMonsterIcon3 = new System.Windows.Forms.TextBox();
-            this.textMonsterIcon4 = new System.Windows.Forms.TextBox();
-            this.textMonsterIcon5 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPlayers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuestCount)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantityB)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -146,7 +147,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuestID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDifficulty)).BeginInit();
-            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOpenFile
@@ -246,7 +246,7 @@
             "Unknown",
             "大討伐",
             "Unknown",
-            "非G",
+            "イベント",
             "Unknown",
             "Unknown",
             "Unknown",
@@ -256,7 +256,7 @@
             "Unknown",
             "デイリー",
             "Unknown",
-            "デイリーG",
+            "G級イベント",
             "Unknown",
             "Unknown",
             "緊急?",
@@ -266,7 +266,7 @@
             "Unknown",
             "Unknown",
             "Unknown",
-            "26 遷悠",
+            "遷悠",
             "27 Ｇ★８遷悠",
             "28 G級大討伐",
             "Unknown",
@@ -274,9 +274,9 @@
             "2B 辿異",
             "Unknown",
             "Unknown",
+            "Diva",
             "Unknown",
-            "Unknown",
-            "Unknown",
+            "Keo?",
             "Unknown",
             "G級大討伐支援",
             "G級大討伐支援",
@@ -366,6 +366,55 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Targets";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.textMonsterIcon5);
+            this.groupBox8.Controls.Add(this.textMonsterIcon4);
+            this.groupBox8.Controls.Add(this.textMonsterIcon3);
+            this.groupBox8.Controls.Add(this.textMonsterIcon2);
+            this.groupBox8.Controls.Add(this.textMonsterIcon1);
+            this.groupBox8.Location = new System.Drawing.Point(6, 229);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(996, 74);
+            this.groupBox8.TabIndex = 15;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Icons";
+            // 
+            // textMonsterIcon5
+            // 
+            this.textMonsterIcon5.Location = new System.Drawing.Point(800, 31);
+            this.textMonsterIcon5.Name = "textMonsterIcon5";
+            this.textMonsterIcon5.Size = new System.Drawing.Size(151, 23);
+            this.textMonsterIcon5.TabIndex = 60;
+            // 
+            // textMonsterIcon4
+            // 
+            this.textMonsterIcon4.Location = new System.Drawing.Point(615, 31);
+            this.textMonsterIcon4.Name = "textMonsterIcon4";
+            this.textMonsterIcon4.Size = new System.Drawing.Size(151, 23);
+            this.textMonsterIcon4.TabIndex = 59;
+            // 
+            // textMonsterIcon3
+            // 
+            this.textMonsterIcon3.Location = new System.Drawing.Point(427, 31);
+            this.textMonsterIcon3.Name = "textMonsterIcon3";
+            this.textMonsterIcon3.Size = new System.Drawing.Size(151, 23);
+            this.textMonsterIcon3.TabIndex = 58;
+            // 
+            // textMonsterIcon2
+            // 
+            this.textMonsterIcon2.Location = new System.Drawing.Point(241, 31);
+            this.textMonsterIcon2.Name = "textMonsterIcon2";
+            this.textMonsterIcon2.Size = new System.Drawing.Size(151, 23);
+            this.textMonsterIcon2.TabIndex = 57;
+            // 
+            // textMonsterIcon1
+            // 
+            this.textMonsterIcon1.Location = new System.Drawing.Point(54, 31);
+            this.textMonsterIcon1.Name = "textMonsterIcon1";
+            this.textMonsterIcon1.Size = new System.Drawing.Size(151, 23);
+            this.textMonsterIcon1.TabIndex = 56;
             // 
             // groupBox5
             // 
@@ -1685,55 +1734,6 @@
             this.label22.Text = "Difficulty:";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.textMonsterIcon5);
-            this.groupBox8.Controls.Add(this.textMonsterIcon4);
-            this.groupBox8.Controls.Add(this.textMonsterIcon3);
-            this.groupBox8.Controls.Add(this.textMonsterIcon2);
-            this.groupBox8.Controls.Add(this.textMonsterIcon1);
-            this.groupBox8.Location = new System.Drawing.Point(6, 229);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(996, 74);
-            this.groupBox8.TabIndex = 15;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Icons";
-            // 
-            // textMonsterIcon1
-            // 
-            this.textMonsterIcon1.Location = new System.Drawing.Point(54, 31);
-            this.textMonsterIcon1.Name = "textMonsterIcon1";
-            this.textMonsterIcon1.Size = new System.Drawing.Size(151, 23);
-            this.textMonsterIcon1.TabIndex = 56;
-            // 
-            // textMonsterIcon2
-            // 
-            this.textMonsterIcon2.Location = new System.Drawing.Point(241, 31);
-            this.textMonsterIcon2.Name = "textMonsterIcon2";
-            this.textMonsterIcon2.Size = new System.Drawing.Size(151, 23);
-            this.textMonsterIcon2.TabIndex = 57;
-            // 
-            // textMonsterIcon3
-            // 
-            this.textMonsterIcon3.Location = new System.Drawing.Point(427, 31);
-            this.textMonsterIcon3.Name = "textMonsterIcon3";
-            this.textMonsterIcon3.Size = new System.Drawing.Size(151, 23);
-            this.textMonsterIcon3.TabIndex = 58;
-            // 
-            // textMonsterIcon4
-            // 
-            this.textMonsterIcon4.Location = new System.Drawing.Point(615, 31);
-            this.textMonsterIcon4.Name = "textMonsterIcon4";
-            this.textMonsterIcon4.Size = new System.Drawing.Size(151, 23);
-            this.textMonsterIcon4.TabIndex = 59;
-            // 
-            // textMonsterIcon5
-            // 
-            this.textMonsterIcon5.Location = new System.Drawing.Point(800, 31);
-            this.textMonsterIcon5.Name = "textMonsterIcon5";
-            this.textMonsterIcon5.Size = new System.Drawing.Size(151, 23);
-            this.textMonsterIcon5.TabIndex = 60;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1753,6 +1753,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numPlayers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuestCount)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantityB)).EndInit();
@@ -1779,8 +1781,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuestID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDifficulty)).EndInit();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
 
         }
