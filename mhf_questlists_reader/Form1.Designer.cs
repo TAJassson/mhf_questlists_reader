@@ -121,6 +121,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.numDifficulty = new System.Windows.Forms.NumericUpDown();
             this.label22 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPlayers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuestCount)).BeginInit();
@@ -147,6 +148,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuestID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDifficulty)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOpenFile
@@ -184,7 +186,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(302, 12);
+            this.groupBox1.Location = new System.Drawing.Point(8, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1014, 100);
             this.groupBox1.TabIndex = 4;
@@ -360,7 +362,7 @@
             this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Location = new System.Drawing.Point(302, 118);
+            this.groupBox2.Location = new System.Drawing.Point(8, 118);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1015, 309);
             this.groupBox2.TabIndex = 5;
@@ -1178,7 +1180,7 @@
             this.groupBox6.Controls.Add(this.textClear);
             this.groupBox6.Controls.Add(this.label14);
             this.groupBox6.Controls.Add(this.textTitle);
-            this.groupBox6.Location = new System.Drawing.Point(302, 433);
+            this.groupBox6.Location = new System.Drawing.Point(8, 433);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(1015, 238);
             this.groupBox6.TabIndex = 6;
@@ -1317,9 +1319,9 @@
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.panel1);
-            this.groupBox7.Location = new System.Drawing.Point(308, 677);
+            this.groupBox7.Location = new System.Drawing.Point(8, 677);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(1009, 268);
+            this.groupBox7.Size = new System.Drawing.Size(1015, 268);
             this.groupBox7.TabIndex = 7;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Misc";
@@ -1734,17 +1736,28 @@
             this.label22.Text = "Difficulty:";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // panel2
+            // 
+            this.panel2.AutoScroll = true;
+            this.panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.panel2.Controls.Add(this.groupBox7);
+            this.panel2.Controls.Add(this.groupBox6);
+            this.panel2.Controls.Add(this.groupBox1);
+            this.panel2.Controls.Add(this.groupBox2);
+            this.panel2.Location = new System.Drawing.Point(308, 12);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1060, 615);
+            this.panel2.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1328, 957);
-            this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1386, 639);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnOpenFile);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "mhf_questlists_reader";
@@ -1781,6 +1794,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuestID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDifficulty)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1880,5 +1894,6 @@
         private TextBox textMonsterIcon3;
         private TextBox textMonsterIcon2;
         private TextBox textMonsterIcon1;
+        private Panel panel2;
     }
 }
