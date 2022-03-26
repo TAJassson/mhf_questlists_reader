@@ -122,6 +122,9 @@
             this.numDifficulty = new System.Windows.Forms.NumericUpDown();
             this.label22 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.label39 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPlayers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuestCount)).BeginInit();
@@ -153,7 +156,7 @@
             // 
             // btnOpenFile
             // 
-            this.btnOpenFile.Location = new System.Drawing.Point(12, 600);
+            this.btnOpenFile.Location = new System.Drawing.Point(28, 600);
             this.btnOpenFile.Name = "btnOpenFile";
             this.btnOpenFile.Size = new System.Drawing.Size(75, 23);
             this.btnOpenFile.TabIndex = 0;
@@ -169,7 +172,7 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(12, 12);
+            this.listBox1.Location = new System.Drawing.Point(198, 13);
             this.listBox1.Name = "listBox1";
             this.listBox1.ScrollAlwaysVisible = true;
             this.listBox1.Size = new System.Drawing.Size(284, 574);
@@ -269,11 +272,11 @@
             "Unknown",
             "Unknown",
             "遷悠",
-            "27 Ｇ★８遷悠",
-            "28 G級大討伐",
+            "G★８遷悠",
+            "G級大討伐",
             "Unknown",
             "Unknown",
-            "2B 辿異",
+            "辿異",
             "Unknown",
             "Unknown",
             "Diva",
@@ -1744,17 +1747,40 @@
             this.panel2.Controls.Add(this.groupBox6);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.groupBox2);
-            this.panel2.Location = new System.Drawing.Point(308, 12);
+            this.panel2.Location = new System.Drawing.Point(488, 13);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1060, 615);
             this.panel2.TabIndex = 8;
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 15;
+            this.listBox2.Location = new System.Drawing.Point(12, 13);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(180, 574);
+            this.listBox2.TabIndex = 10;
+            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+            // 
+            // label39
+            // 
+            this.label39.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label39.Location = new System.Drawing.Point(109, 600);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(346, 23);
+            this.label39.TabIndex = 11;
+            this.label39.Text = "Hit Open button to select questlist folder";
+            this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1386, 639);
+            this.ClientSize = new System.Drawing.Size(1560, 639);
+            this.Controls.Add(this.label39);
+            this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnOpenFile);
             this.Controls.Add(this.panel2);
@@ -1895,5 +1921,8 @@
         private TextBox textMonsterIcon2;
         private TextBox textMonsterIcon1;
         private Panel panel2;
+        private ListBox listBox2;
+        private FolderBrowserDialog folderBrowserDialog1;
+        private Label label39;
     }
 }

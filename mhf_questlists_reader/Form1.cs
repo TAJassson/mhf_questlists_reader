@@ -5,8 +5,17 @@ namespace mhf_questlists_reader
 {
     public partial class Form1 : Form
     {
-        string fileHeader = "stored_header_data.txt";
-        string fileQuest = "stored_quest_data.txt";
+        string fileHeader = "";
+        string fileQuest = "";
+        string fileEnd = "";
+
+        int questCount0;
+        int questCount1;
+        int questCount2;
+        int questCount3;
+        int questCount4;
+        int questCount5;
+
 
         public Form1()
         {
@@ -22,81 +31,119 @@ namespace mhf_questlists_reader
 
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
-            DialogResult dr = openFileDialog1.ShowDialog();
-            if (dr == DialogResult.OK)
+            DialogResult drfolder = folderBrowserDialog1.ShowDialog();
+            if (drfolder == DialogResult.OK)
             {
-                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                label39.Text = "Loading questlist data...";
                 listBox1.Items.Clear();
+                listBox2.Items.Clear();
 
-                string fileloc = openFileDialog1.FileName;
-                byte[] bydata = File.ReadAllBytes(fileloc);
-
-                int QuestCount = bydata[1];
-                numQuestCount.Value = QuestCount;
-
-                int prevPointer = 8;
-                for (int i = 0; i < QuestCount; i++)
+                string[] fileNames = Directory.GetFiles(folderBrowserDialog1.SelectedPath).Select(Path.GetFileName).ToArray();     //{"list_0.bin", "list_42.bin",}
+                if (fileNames.Contains("list_0.bin"))       //0
                 {
-                    byte[] questHeaderData0 = bydata.Skip(prevPointer).Take(16).ToArray();
-                    int quest1Length = questHeaderData0[14] * 256 + questHeaderData0[15];
-                    byte[] questData0 = bydata.Skip(prevPointer + 16).Take(quest1Length).ToArray();
+                    listBox2.Items.Add("list_0.bin");
+                    byte[] byteData = File.ReadAllBytes(folderBrowserDialog1.SelectedPath + "/"+"list_0.bin");
+                    CreateStoredData(byteData, 0);
 
-                    lineChanger(BitConverter.ToString(questHeaderData0).Replace("-", string.Empty), fileHeader, i);
-                    lineChanger(BitConverter.ToString(questData0).Replace("-", string.Empty), fileQuest, i);
-
-                    int pTitleAndName = BitConverter.ToInt32(questData0, 320);
-                    int pMainoObj = BitConverter.ToInt32(questData0, 324);
-
-                    string tTitleAndName = Encoding.GetEncoding("Shift_JIS").GetString(questData0.Skip(pTitleAndName).Take(pMainoObj - pTitleAndName).ToArray()).Replace("\n", "\r\n");
-                    listBox1.Items.Add(tTitleAndName);
-
-                    //クエストの読み込みが一番最後のクエストまで達していないなら
-                    //クエストデータの最後から一バイトずつ読み取り
-                    //0が２回出てきたらforを中断
-                    //末尾の最期をpointerとして返す　
-                    //int prevNum = 0;
-                    //bool zeroAppered = false;
-                    //if (i == QuestCount - 1)
-                    //{
-
-                    //}
-                    //else
-                    //{
-                    //    int t1 = 0;     //末尾から読み取った回数
-                    //    for (int t = 0; t < 100; t++)
-                    //    {
-                    //        int singleByte = bydata[prevPointer + 16 + quest1Length + t];
-                    //        if (singleByte == prevNum & singleByte == 0)
-                    //        {
-                    //            t1 = t + 1;
-                    //            break;
-                    //        }
-                    //        prevNum = singleByte;
-                    //    }
-                    //    prevPointer = prevPointer + 16 + quest1Length + t1;
-                    //}
-
-                    int t1 = 0;
-                    if (i == QuestCount - 1)
+                    questCount0 = byteData[1];
+                    string nextFileName = "list_" + questCount0.ToString() + ".bin";
+                    if (fileNames.Contains(nextFileName))       //42
                     {
+                        listBox2.Items.Add(nextFileName);
+                        byteData = File.ReadAllBytes(folderBrowserDialog1.SelectedPath + "/" + nextFileName);
+                        CreateStoredData(byteData, 1);
 
-                    }
-                    else
-                    {
-                        for (int t = 1; t < 250; t++)
+                        questCount1 = byteData[1];
+                        nextFileName = "list_" + (questCount0 + questCount1).ToString() + ".bin";
+                        if (fileNames.Contains(nextFileName))       //84
                         {
-                            int singleByte = bydata[prevPointer + 16 + quest1Length + t];           //末尾の最初から
-                            if (singleByte == 64)
+                            listBox2.Items.Add(nextFileName);
+                            byteData = File.ReadAllBytes(folderBrowserDialog1.SelectedPath + "/" + nextFileName);
+                            CreateStoredData(byteData, 2);
+
+                            questCount2 = byteData[1];
+                            nextFileName = "list_" + (questCount0 + questCount1 + questCount2).ToString() + ".bin";
+                            if (fileNames.Contains(nextFileName))       //126
                             {
-                                if (bydata[prevPointer + 16 + quest1Length + t+1] == 1)
+                                listBox2.Items.Add(nextFileName);
+                                byteData = File.ReadAllBytes(folderBrowserDialog1.SelectedPath + "/" + nextFileName);
+                                CreateStoredData(byteData, 3);
+
+                                questCount3 = byteData[1];
+                                nextFileName = "list_" + (questCount0 + questCount1 + questCount2 + questCount3).ToString() + ".bin";
+                                if (fileNames.Contains(nextFileName))       //168
                                 {
-                                    t1 = prevPointer + 16 + quest1Length + t - 56;
-                                    break;
+                                    listBox2.Items.Add(nextFileName);
+                                    byteData = File.ReadAllBytes(folderBrowserDialog1.SelectedPath + "/" + nextFileName);
+                                    CreateStoredData(byteData, 4);
+
+                                    questCount4 = byteData[1];
+                                    nextFileName = "list_" + (questCount0 + questCount1 + questCount2 + questCount3 + questCount4).ToString() + ".bin";
+                                    if (fileNames.Contains(nextFileName))       //No.6
+                                    {
+                                        listBox2.Items.Add(nextFileName);
+                                        byteData = File.ReadAllBytes(folderBrowserDialog1.SelectedPath + "/" + nextFileName);
+                                        CreateStoredData(byteData, 5);
+
+                                        questCount5 = byteData[1];
+                                    }
                                 }
                             }
                         }
-                        prevPointer = t1;
                     }
+
+                }
+                label39.Text = "Load completed";
+            }
+        }
+
+        private  void CreateStoredData(byte[] byteData, int count)
+        {
+            int QuestCount = byteData[1];
+            int prevPointer = 8;
+            int prevPointerEndOfText = 0;
+            byte[] questEndData;
+
+            fileHeader = "Stored_Data/" + count.ToString() + "/stored_header_data.txt";
+            fileQuest = "Stored_Data/" + count.ToString() + "/stored_quest_data.txt";
+            fileEnd = "Stored_Data/" + count.ToString() + "/stored_end_data.txt";
+
+            for (int i = 0; i < QuestCount; i++)
+            {
+                byte[] questHeaderData = byteData.Skip(prevPointer).Take(16).ToArray();
+                int questLength = questHeaderData[14] * 256 + questHeaderData[15];
+                byte[] questData = byteData.Skip(prevPointer + 16).Take(questLength).ToArray();
+
+                lineChanger(BitConverter.ToString(questHeaderData).Replace("-", string.Empty), fileHeader, i);
+                lineChanger(BitConverter.ToString(questData).Replace("-", string.Empty), fileQuest, i);
+
+                int t1 = 0;
+                int t2 = 0;
+                if (i == QuestCount - 1)
+                {
+                    int endByteVal = byteData[prevPointer + 16 + questLength];
+                    questEndData = byteData.Skip(prevPointer + 16 + questLength + 1).Take(endByteVal).ToArray();
+                    lineChanger(BitConverter.ToString(questEndData).Replace("-", string.Empty), fileEnd, i);
+                }
+                else
+                {
+                    for (int t = 1; t < 250; t++)
+                    {
+                        int singleByte = byteData[prevPointer + 16 + questLength + t];
+                        if (singleByte == 64)
+                        {
+                            if (byteData[prevPointer + 16 + questLength + t + 1] == 1)
+                            {
+                                t1 = prevPointer + 16 + questLength + t - 56;
+                                t2 = prevPointer + 16 + questLength;
+                                break;
+                            }
+                        }
+                    }
+                    prevPointer = t1;
+                    prevPointerEndOfText = t2;
+                    questEndData = byteData.Skip(prevPointerEndOfText).Take(prevPointer - prevPointerEndOfText).ToArray();
+                    lineChanger(BitConverter.ToString(questEndData).Replace("-", string.Empty), fileEnd, i);
                 }
             }
         }
@@ -178,8 +225,6 @@ namespace mhf_questlists_reader
             textMonsterIcon4.Text = Icon4;
             textMonsterIcon5.Text = Icon5;
 
-
-
             //Text
             int pTitleAndName = BitConverter.ToInt16(byteData, 320);
             int pMainoObj = BitConverter.ToInt16(byteData, 324);
@@ -239,6 +284,57 @@ namespace mhf_questlists_reader
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Location = new Point(265, 25);
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            int amount = 1;
+
+            int index = listBox2.SelectedIndex;
+            fileHeader = "Stored_Data/" + index.ToString() + "/stored_header_data.txt";
+            fileQuest = "Stored_Data/" + index.ToString() + "/stored_quest_data.txt";
+            fileEnd = "Stored_Data/" + index.ToString() + "/stored_end_data.txt";
+
+            switch (index)
+            {
+                case 0:
+                    amount = questCount0;
+                    break;
+                case 1:
+                    amount = questCount1;
+                    break;
+                case 2:
+                    amount = questCount2;
+                    break;
+                case 3:
+                    amount = questCount3;
+                    break;
+                case 4:
+                    amount = questCount4;
+                    break;
+                case 5:
+                    amount = questCount5;
+                    break;
+            }
+            numQuestCount.Value = amount;
+
+            for (int i = 0; i < amount; i++)
+            {
+                string strData = File.ReadLines(fileQuest).ElementAt(i);
+                var listData = new List<byte>();
+                for (int r = 0; r < strData.Length / 2; r++)
+                {
+                    listData.Add(Convert.ToByte(strData.Substring(r * 2, 2), 16));
+                }
+                byte[] data = listData.ToArray();
+
+                int pTitleAndName = BitConverter.ToInt32(data, 320);
+                int pMainoObj = BitConverter.ToInt32(data, 324);
+                string tTitleAndName = Encoding.GetEncoding("Shift_JIS").GetString(data.Skip(pTitleAndName).Take(pMainoObj - pTitleAndName).ToArray()).Replace("\n", "\r\n");
+                listBox1.Items.Add(tTitleAndName);
+            }
         }
     }
 }
