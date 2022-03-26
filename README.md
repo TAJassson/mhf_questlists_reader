@@ -25,4 +25,4 @@ Added panel and scrollbar to information section.
 Now load entire questlist folder, not each single file.  
 Added new listbox to show loaded file name.  
 Added a label at the bottom of the form that works like a log.  
-Added `Stored_Data` folder to store binary data. Don't delte this.
+Added `Stored_Data` folder to store binary data. Don't delete this.
