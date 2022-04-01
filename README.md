@@ -39,5 +39,8 @@ Added a label at the bottom of the form that works like a log.
 Added `Stored_Data` folder to store binary data. Don't delete this.
 
 ## v1.3
-
+Added 'Export' button to create and export new questlist files.  
+Added `Add` button to add a new quest to current selected list.  
+Added `Delete` button to delete selected quest from list.  
+Added 2 boxed to show how many quests you've loaded.  
 
