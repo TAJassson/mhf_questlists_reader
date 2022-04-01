@@ -43,4 +43,5 @@ Added 'Export' button to create and export new questlist files.
 Added `Add` button to add a new quest to current selected list.  
 Added `Delete` button to delete selected quest from list.  
 Added 2 boxed to show how many quests you've loaded.  
+Changed to form is resizable.
 
