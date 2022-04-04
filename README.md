@@ -20,6 +20,9 @@ Open `list_168.bin` with binary editor(eg.HxD) and check offset 01h. It's a numb
 # Known issues
 - Sometimes `Delete` button doesn't work correctly.
 
+# Build
+Don't forget to drop `Stored_Data` folder to the same path where exe created.
+
 # Changelog
 
 ## v 1.0
