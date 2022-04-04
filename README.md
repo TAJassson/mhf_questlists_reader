@@ -5,10 +5,21 @@ I'm planning to add an function that add new quest to questlist easily, but I ca
 
 # Before you use
 Below are some important tips for using this repo. Please read them at least once.  
-- My reader may not read publicly shared questlist files correctly because it does not have the proper structure. Also I don't recommend you to keep using it as it is because the reader doesn't support it for a technical reason. Here's a how to fix it.   
+- My reader may not read publicly shared questlist files correctly because it does not have proper structure. Also I don't recommend you to keep using it as it is because the reader doesn't support it for a technical reason. Here's how to fix it.   
 Open `list_168.bin` with binary editor(eg.HxD) and check offset 01h. It's a number of quests this file loads. If it is `13`, change it to `0D`, becasue `list_168.bin` has 13 quests in total and it should be described as `0D` in hex but somehow the value is `13` of integers.
+
+- Before you add new quest, deleting these quests is highly recommended from `list_168.bin`.  
+![image](https://user-images.githubusercontent.com/89909040/161503024-52d490b4-1a5c-4ead-a501-85fad5a7457d.png)
+
+
+- You should decrypt quest file itself with a tool called `ReFrontier` before you use `Add` button.
+- Each questlist files are able to contain up to 42 quests.
+- While you can add new quest to list, you cannot add new list file via editor. Thus, I recommend you not to delete all quests from one of list files. I mean leave at least one quest in list.
+- `Export` button creates new questlist files, and overwrites if there is one there with the same name files.
+- Save change option has not yet implemented.
+
 # Known issues
-- Sometimes unable to load Sub A text correctly
+- Sometimes `Delete` button doesn't work correctly.
 
 # Changelog
 
@@ -30,3 +41,11 @@ Now load entire questlist folder, not each single file.
 Added new listbox to show loaded file name.  
 Added a label at the bottom of the form that works like a log.  
 Added `Stored_Data` folder to store binary data. Don't delete this.
+
+## v1.3
+Added `Export` button to create and export new questlist files.  
+Added `Add` button to add a new quest to current selected list.  
+Added `Delete` button to delete selected quest from list.  
+Added 2 boxed to show how many quests you've loaded.  
+Changed to form is resizable.
+
