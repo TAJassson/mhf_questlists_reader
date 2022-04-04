@@ -50,4 +50,4 @@ Added 2 boxed to show how many quests you've loaded.
 Changed to form is resizable.
 
 ## v1.3.1
-Fixed few samll things.
+Fixed few small things.
