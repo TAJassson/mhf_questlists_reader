@@ -1,7 +1,6 @@
-mhf_questlists_reader is a c# form that allows you to read questlist files.  
-Not 100% functional, but you can still use it.  
-Also it may help you to understand questlist and quest file, becasue both have similar structure.
-I'm planning to add an function that add new quest to questlist easily, but I can't promise that.
+mhf_questlists_reader is a c# form that allows you to manage questlist files.  
+
+I'm sorry for so much bugs.
 
 # Before you use
 Below are some important tips for using this repo. Please read them at least once.  
