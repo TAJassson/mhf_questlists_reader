@@ -131,8 +131,6 @@
             this.numDifficulty = new System.Windows.Forms.NumericUpDown();
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.labelLog3 = new System.Windows.Forms.Label();
-            this.labelLog2 = new System.Windows.Forms.Label();
             this.labelLog1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numQuestCount)).BeginInit();
             this.groupBox9.SuspendLayout();
@@ -1861,27 +1859,13 @@
             this.groupBox11.Size = new System.Drawing.Size(1043, 960);
             this.groupBox11.TabIndex = 18;
             this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "groupBox11";
-            // 
-            // labelLog3
-            // 
-            this.labelLog3.Location = new System.Drawing.Point(12, 627);
-            this.labelLog3.Name = "labelLog3";
-            this.labelLog3.Size = new System.Drawing.Size(464, 23);
-            this.labelLog3.TabIndex = 19;
-            // 
-            // labelLog2
-            // 
-            this.labelLog2.Location = new System.Drawing.Point(12, 650);
-            this.labelLog2.Name = "labelLog2";
-            this.labelLog2.Size = new System.Drawing.Size(464, 23);
-            this.labelLog2.TabIndex = 20;
+            this.groupBox11.Text = "Quest Data";
             // 
             // labelLog1
             // 
-            this.labelLog1.Location = new System.Drawing.Point(12, 673);
+            this.labelLog1.Location = new System.Drawing.Point(12, 627);
             this.labelLog1.Name = "labelLog1";
-            this.labelLog1.Size = new System.Drawing.Size(464, 23);
+            this.labelLog1.Size = new System.Drawing.Size(464, 69);
             this.labelLog1.TabIndex = 21;
             // 
             // Form1
@@ -1891,8 +1875,6 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1543, 714);
             this.Controls.Add(this.labelLog1);
-            this.Controls.Add(this.labelLog2);
-            this.Controls.Add(this.labelLog3);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox10);
@@ -2044,8 +2026,6 @@
         private NumericUpDown numDifficulty;
         private Label label22;
         private GroupBox groupBox11;
-        private Label labelLog3;
-        private Label labelLog2;
         private Label labelLog1;
     }
 }

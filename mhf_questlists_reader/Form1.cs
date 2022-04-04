@@ -390,7 +390,6 @@ namespace mhf_questlists_reader
                     break;
             }
             numQuestCount.Value = amount;
-            ManageLogs("log");
 
             for (int i = 0; i < amount; i++)
             {
@@ -832,9 +831,7 @@ namespace mhf_questlists_reader
         }
 
         void ManageLogs(string text)
-        {
-            labelLog3.Text = labelLog2.Text;
-            labelLog2.Text = labelLog1.Text;
+        { 
             labelLog1.Text = text;
         }
 
