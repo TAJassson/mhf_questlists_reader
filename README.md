@@ -1,7 +1,6 @@
-mhf_questlists_reader is a c# form that allows you to read questlist files.  
-Not 100% functional, but you can still use it.  
-Also it may help you to understand questlist and quest file, becasue both have similar structure.
-I'm planning to add an function that add new quest to questlist easily, but I can't promise that.
+mhf_questlists_reader is a c# form that allows you to manage questlist files.  
+
+I'm sorry for so much bugs.
 
 # Before you use
 Below are some important tips for using this repo. Please read them at least once.  
@@ -20,6 +19,9 @@ Open `list_168.bin` with binary editor(eg.HxD) and check offset 01h. It's a numb
 
 # Known issues
 - Sometimes `Delete` button doesn't work correctly.
+
+# Build
+Don't forget to drop `Stored_Data` folder to the same path where exe created.
 
 # Changelog
 
@@ -49,3 +51,5 @@ Added `Delete` button to delete selected quest from list.
 Added 2 boxed to show how many quests you've loaded.  
 Changed to form is resizable.
 
+## v1.3.1
+Fixed few small things.
