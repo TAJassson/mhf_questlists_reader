@@ -2,6 +2,9 @@ mhf_questlists_reader is a c# form that allows you to manage questlist files.
 
 I'm sorry for so much bugs.
 
+# Todo
+- Load more values such as Equipments, skills, limitation etc.
+
 # Before you use
 Below are some important tips for using this repo. Please read them at least once.  
 - My reader may not read publicly shared questlist files correctly because it does not have proper structure. Also I don't recommend you to keep using it as it is because the reader doesn't support it for a technical reason. Here's how to fix it.   
