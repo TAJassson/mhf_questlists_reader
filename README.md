@@ -13,9 +13,9 @@ Open `list_168.bin` with binary editor(eg.HxD) and check offset 01h. It's a numb
 
 - You should decrypt quest file itself with a tool called `ReFrontier` before you use `Add` button.
 - Each questlist files are able to contain up to 42 quests.
-- While you can add new quest to list, you cannot add new list file via editor. Thus, I recommend you not to delete all quests from one of list files. I mean leave at least one quest in list.
-- `Export` button creates new questlist files, and overwrites if there is one there with the same name files.
-- Save change option has not yet implemented.
+- While you can add new quest to list, you cannot add new list file via editor. Thus, I recommend you not to delete all quests from one of list files. I mean leave at least one quest in list.  
+- `Export` button creates new questlist files, and overwrites if there is one there with the same name files.  
+- `Save change` button is used to save current selected quest changes.  
 
 # Known issues
 - Sometimes `Delete` button doesn't work correctly.
@@ -53,3 +53,8 @@ Changed to form is resizable.
 
 ## v1.3.1
 Fixed few small things.
+
+## v1.4
+Added `Save changes` button to save current selected quest changes.  
+Added textbox to show Map name.  
+Added combobox to show monsters and items name and its ID.  
