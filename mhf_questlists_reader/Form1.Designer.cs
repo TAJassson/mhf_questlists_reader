@@ -102,6 +102,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textMap = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
@@ -154,7 +155,6 @@
             this.comMonsterName = new System.Windows.Forms.ComboBox();
             this.buttonSaveChanges = new System.Windows.Forms.Button();
             this.labelLog1 = new System.Windows.Forms.Label();
-            this.textMap = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numQuestCount)).BeginInit();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numTotal)).BeginInit();
@@ -768,6 +768,7 @@
             this.textTargetB.ReadOnly = true;
             this.textTargetB.Size = new System.Drawing.Size(152, 23);
             this.textTargetB.TabIndex = 60;
+            this.textTargetB.TextChanged += new System.EventHandler(this.textTargetB_TextChanged);
             // 
             // comQuestTypeB
             // 
@@ -875,6 +876,7 @@
             this.textTargetA.ReadOnly = true;
             this.textTargetA.Size = new System.Drawing.Size(152, 23);
             this.textTargetA.TabIndex = 60;
+            this.textTargetA.TextChanged += new System.EventHandler(this.textTargetA_TextChanged);
             // 
             // comQuestTypeA
             // 
@@ -982,6 +984,7 @@
             this.textTargetM.ReadOnly = true;
             this.textTargetM.Size = new System.Drawing.Size(151, 23);
             this.textTargetM.TabIndex = 59;
+            this.textTargetM.TextChanged += new System.EventHandler(this.textTargetM_TextChanged);
             // 
             // comQuestTypeM
             // 
@@ -1102,6 +1105,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(990, 244);
             this.panel1.TabIndex = 0;
+            // 
+            // textMap
+            // 
+            this.textMap.Location = new System.Drawing.Point(794, 100);
+            this.textMap.Name = "textMap";
+            this.textMap.ReadOnly = true;
+            this.textMap.Size = new System.Drawing.Size(151, 23);
+            this.textMap.TabIndex = 70;
             // 
             // label50
             // 
@@ -1557,7 +1568,7 @@
             this.groupBox11.Controls.Add(this.groupBox6);
             this.groupBox11.Controls.Add(this.groupBox1);
             this.groupBox11.Controls.Add(this.groupBox2);
-            this.groupBox11.Location = new System.Drawing.Point(488, 17);
+            this.groupBox11.Location = new System.Drawing.Point(488, 12);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(1043, 1025);
             this.groupBox11.TabIndex = 18;
@@ -1619,6 +1630,8 @@
             // 
             // comItemName
             // 
+            this.comItemName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comItemName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comItemName.FormattingEnabled = true;
             this.comItemName.Location = new System.Drawing.Point(293, 48);
             this.comItemName.Name = "comItemName";
@@ -1637,6 +1650,8 @@
             // 
             // comMonsterName
             // 
+            this.comMonsterName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comMonsterName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comMonsterName.FormattingEnabled = true;
             this.comMonsterName.Location = new System.Drawing.Point(293, 18);
             this.comMonsterName.Name = "comMonsterName";
@@ -1661,14 +1676,6 @@
             this.labelLog1.Size = new System.Drawing.Size(464, 69);
             this.labelLog1.TabIndex = 21;
             this.labelLog1.Text = "log";
-            // 
-            // textMap
-            // 
-            this.textMap.Location = new System.Drawing.Point(794, 100);
-            this.textMap.Name = "textMap";
-            this.textMap.ReadOnly = true;
-            this.textMap.Size = new System.Drawing.Size(151, 23);
-            this.textMap.TabIndex = 70;
             // 
             // Form1
             // 

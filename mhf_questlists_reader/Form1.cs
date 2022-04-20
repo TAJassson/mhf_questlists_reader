@@ -36,10 +36,7 @@ namespace mhf_questlists_reader
 
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            listBox2.Items.Clear();
-            listBox1.ClearSelected();
-            listBox2.ClearSelected();
+
 
             string loca = File.ReadLines("Stored_Data/misc.txt").ElementAt(0);
             if (loca != null)
@@ -50,6 +47,11 @@ namespace mhf_questlists_reader
             DialogResult drfolder = folderBrowserDialog1.ShowDialog();
             if (drfolder == DialogResult.OK)
             {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox1.ClearSelected();
+                listBox2.ClearSelected();
+
                 string loc = folderBrowserDialog1.SelectedPath;
                 lineChanger(loc, "Stored_Data/misc.txt", 0);
 
@@ -115,6 +117,7 @@ namespace mhf_questlists_reader
                     ManageLogs("Load completed.");
                     isLoaded = true;
                     listBox2.SelectedIndex = 0;
+                    listBox1.SelectedIndex = 0;
                     numTotal.Value = questCount0 + questCount1 + questCount2 + questCount3 + questCount4 + questCount5;
                 }
                 else
@@ -194,6 +197,11 @@ namespace mhf_questlists_reader
                 }
                 else
                 {
+                    int index = listBox2.SelectedIndex;
+                    fileHeader = "Stored_Data/" + index.ToString() + "/stored_header_data.txt";
+                    fileQuest = "Stored_Data/" + index.ToString() + "/stored_quest_data.txt";
+                    fileEnd = "Stored_Data/" + index.ToString() + "/stored_end_data.txt";
+
                     string strHeader = File.ReadLines(fileHeader).ElementAt(listBox1.SelectedIndex);
                     var listHeader = new List<byte>();
                     for (int i = 0; i < strHeader.Length / 2; i++)
@@ -210,145 +218,152 @@ namespace mhf_questlists_reader
                     byte[] byteData = listData.ToArray();
 
                     //Header
-                    comMark.SelectedIndex = listHeader[11];
-                    comQuestType.SelectedIndex = listHeader[4];
-                    numPlayers.Value = listHeader[3];
+                    if (listHeader.Count != 0)
+                    {
+                        comMark.SelectedIndex = listHeader[11];
+                        comQuestType.SelectedIndex = listHeader[4];
+                        numPlayers.Value = listHeader[3];
+                    }
 
                     //Target
-                    List.ObjectiveType.TryGetValue(BitConverter.ToInt32(byteData, 48), out string targetOM);
-                    List.ObjectiveType.TryGetValue(BitConverter.ToInt32(byteData, 56), out string targetOA);
-                    List.ObjectiveType.TryGetValue(BitConverter.ToInt32(byteData, 64), out string targetOB);
-                    comQuestTypeM.Text = targetOM;
-                    comQuestTypeA.Text = targetOA;
-                    comQuestTypeB.Text = targetOB;
-
-                    int targetM = BitConverter.ToUInt16(byteData, 52);
-                    int targetA = BitConverter.ToInt16(byteData, 60);
-                    int targetB = BitConverter.ToInt16(byteData, 68);
-
-
-                    if (targetOM != "Deliver")
+                    if (byteData.Length != 0)
                     {
-                        List.MonsterID.TryGetValue(targetM, out string targetIDM);
-                        textTargetM.Text = targetIDM;
+                        List.ObjectiveType.TryGetValue(BitConverter.ToInt32(byteData, 48), out string targetOM);
+                        List.ObjectiveType.TryGetValue(BitConverter.ToInt32(byteData, 56), out string targetOA);
+                        List.ObjectiveType.TryGetValue(BitConverter.ToInt32(byteData, 64), out string targetOB);
+                        comQuestTypeM.Text = targetOM;
+                        comQuestTypeA.Text = targetOA;
+                        comQuestTypeB.Text = targetOB;
+
+                        int targetM = BitConverter.ToUInt16(byteData, 52);
+                        int targetA = BitConverter.ToInt16(byteData, 60);
+                        int targetB = BitConverter.ToInt16(byteData, 68);
+
+
+                        if (targetOM != "Deliver")
+                        {
+                            List.MonsterID.TryGetValue(targetM, out string targetIDM);
+                            textTargetM.Text = targetIDM;
+                        }
+                        else
+                        {
+                            List.ItemID.TryGetValue(targetM, out string targetIDM);
+                            textTargetM.Text = targetIDM;
+                        }
+
+                        if (targetOA != "Deliver")
+                        {
+                            List.MonsterID.TryGetValue(targetA, out string targetIDA);
+                            textTargetA.Text = targetIDA;
+                        }
+                        else
+                        {
+                            List.ItemID.TryGetValue(targetA, out string targetIDA);
+                            textTargetA.Text = targetIDA;
+                        }
+
+                        if (targetOB != "Deliver")
+                        {
+                            List.MonsterID.TryGetValue(targetB, out string targetIDB);
+                            textTargetB.Text = targetIDB;
+                        }
+                        else
+                        {
+                            List.ItemID.TryGetValue(targetB, out string targetIDB);
+                            textTargetB.Text = targetIDB;
+                        }
+
+                        numQuantityM.Value = BitConverter.ToInt16(byteData, 54);
+                        numQuantityA.Value = BitConverter.ToInt16(byteData, 62);
+                        numQuantityB.Value = BitConverter.ToInt16(byteData, 70);
+
+                        List.MonsterID.TryGetValue(byteData[185], out string Icon1);
+                        List.MonsterID.TryGetValue(byteData[186], out string Icon2);
+                        List.MonsterID.TryGetValue(byteData[187], out string Icon3);
+                        List.MonsterID.TryGetValue(byteData[188], out string Icon4);
+                        List.MonsterID.TryGetValue(byteData[189], out string Icon5);
+
+                        textMonsterIcon1.Text = Icon1;
+                        textMonsterIcon2.Text = Icon2;
+                        textMonsterIcon3.Text = Icon3;
+                        textMonsterIcon4.Text = Icon4;
+                        textMonsterIcon5.Text = Icon5;
+
+                        //Text
+                        int pTitleAndName = BitConverter.ToInt16(byteData, 320);
+                        int pMainoObj = BitConverter.ToInt16(byteData, 324);
+                        int pAObj = BitConverter.ToInt16(byteData, 328);
+                        int pBObj = BitConverter.ToInt16(byteData, 332);
+                        int pClearC = BitConverter.ToInt16(byteData, 336);
+                        int pFailC = BitConverter.ToInt16(byteData, 340);
+                        int pEmp = BitConverter.ToInt16(byteData, 344);
+                        int pText = BitConverter.ToInt16(byteData, 348);
+
+                        string tTitleAndName = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pTitleAndName).Take(pMainoObj - pTitleAndName).ToArray()).Replace("\n", "\r\n");
+                        textTitle.Text = tTitleAndName;
+
+                        string tMainObj = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pMainoObj).Take(pAObj - pMainoObj).ToArray()).Replace("\n", "\r\n");
+                        textMain.Text = tMainObj;
+
+
+                        if (pAObj == pBObj)
+                        {
+                            string tAObj = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pAObj).Take(pClearC - pAObj).ToArray()).Replace("\n", "\r\n");
+                            textA.Text = tAObj;
+                            textB.Text = tAObj;
+                        }
+                        else
+                        {
+                            string tAObj = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pAObj).Take(pBObj - pAObj).ToArray()).Replace("\n", "\r\n");
+                            textA.Text = tAObj;
+
+                            string tBObj = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pBObj).Take(pClearC - pBObj).ToArray()).Replace("\n", "\r\n");
+                            textB.Text = tBObj;
+                        }
+
+
+                        string tClearC = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pClearC).Take(pFailC - pClearC).ToArray()).Replace("\n", "\r\n");
+                        textClear.Text = tClearC;
+
+                        string tFailC = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pFailC).Take(pEmp - pFailC).ToArray()).Replace("\n", "\r\n");
+                        textFail.Text = tFailC;
+
+                        string tEmp = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pEmp).Take(pText - pEmp).ToArray()).Replace("\n", "\r\n");
+                        textEmp.Text = tEmp;
+
+                        string tText = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pText).Take(byteData.Length - pText).ToArray()).Replace("\n", "\r\n");
+                        textText.Text = tText;
+
+                        //Misc
+                        numDifficulty.Value = listData[4];
+                        numQuestID.Value = BitConverter.ToUInt16(byteData, 46);
+                        numFee.Value = BitConverter.ToInt16(byteData, 12);
+                        numMR.Value = BitConverter.ToInt32(byteData, 16);
+                        numAR.Value = BitConverter.ToInt32(byteData, 24);
+                        numBR.Value = BitConverter.ToInt32(byteData, 28);
+                        numMP.Value = BitConverter.ToInt32(byteData, 164);
+                        numAP.Value = BitConverter.ToInt32(byteData, 168);
+                        numBP.Value = BitConverter.ToInt32(byteData, 172);
+                        numReqHR.Value = BitConverter.ToInt32(byteData, 74);
+                        numReqHR2.Value = BitConverter.ToInt32(byteData, 78);
+                        List.ItemID.TryGetValue(BitConverter.ToInt16(byteData, 176), out string Item1);
+                        List.ItemID.TryGetValue(BitConverter.ToInt16(byteData, 178), out string Item2);
+                        List.ItemID.TryGetValue(BitConverter.ToInt16(byteData, 180), out string Item3);
+                        textItem1.Text = Item1;
+                        textItem2.Text = Item2;
+                        textItem3.Text = Item3;
+                        comCourse.SelectedIndex = listData[6];
+                        numTime.Value = BitConverter.ToInt32(byteData, 32) / 30;
+
+                        numUnk1.Value = byteData[150];
+                        numUnk2.Value = byteData[151];
+                        numUnk3.Value = byteData[152];
+                        numUnk4.Value = byteData[153];
+
+                        List.MapID.TryGetValue(BitConverter.ToInt16(byteData, 36), out string map);
+                        textMap.Text = map;
                     }
-                    else
-                    {
-                        List.ItemID.TryGetValue(targetM, out string targetIDM);
-                        textTargetM.Text = targetIDM;
-                    }
 
-                    if (targetOA != "Deliver")
-                    {
-                        List.MonsterID.TryGetValue(targetA, out string targetIDA);
-                        textTargetA.Text = targetIDA;
-                    }
-                    else
-                    {
-                        List.ItemID.TryGetValue(targetA, out string targetIDA);
-                        textTargetA.Text = targetIDA;
-                    }
-
-                    if (targetOB != "Deliver")
-                    {
-                        List.MonsterID.TryGetValue(targetB, out string targetIDB);
-                        textTargetB.Text = targetIDB;
-                    }
-                    else
-                    {
-                        List.ItemID.TryGetValue(targetB, out string targetIDB);
-                        textTargetB.Text = targetIDB;
-                    }
-
-                    numQuantityM.Value = BitConverter.ToInt16(byteData, 54);
-                    numQuantityA.Value = BitConverter.ToInt16(byteData, 62);
-                    numQuantityB.Value = BitConverter.ToInt16(byteData, 70);
-
-                    List.MonsterID.TryGetValue(byteData[185], out string Icon1);
-                    List.MonsterID.TryGetValue(byteData[186], out string Icon2);
-                    List.MonsterID.TryGetValue(byteData[187], out string Icon3);
-                    List.MonsterID.TryGetValue(byteData[188], out string Icon4);
-                    List.MonsterID.TryGetValue(byteData[189], out string Icon5);
-
-                    textMonsterIcon1.Text = Icon1;
-                    textMonsterIcon2.Text = Icon2;
-                    textMonsterIcon3.Text = Icon3;
-                    textMonsterIcon4.Text = Icon4;
-                    textMonsterIcon5.Text = Icon5;
-
-                    //Text
-                    int pTitleAndName = BitConverter.ToInt16(byteData, 320);
-                    int pMainoObj = BitConverter.ToInt16(byteData, 324);
-                    int pAObj = BitConverter.ToInt16(byteData, 328);
-                    int pBObj = BitConverter.ToInt16(byteData, 332);
-                    int pClearC = BitConverter.ToInt16(byteData, 336);
-                    int pFailC = BitConverter.ToInt16(byteData, 340);
-                    int pEmp = BitConverter.ToInt16(byteData, 344);
-                    int pText = BitConverter.ToInt16(byteData, 348);
-
-                    string tTitleAndName = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pTitleAndName).Take(pMainoObj - pTitleAndName).ToArray()).Replace("\n", "\r\n");
-                    textTitle.Text = tTitleAndName;
-
-                    string tMainObj = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pMainoObj).Take(pAObj - pMainoObj).ToArray()).Replace("\n", "\r\n");
-                    textMain.Text = tMainObj;
-
-
-                    if (pAObj == pBObj)
-                    {
-                        string tAObj = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pAObj).Take(pClearC - pAObj).ToArray()).Replace("\n", "\r\n");
-                        textA.Text = tAObj;
-                        textB.Text = tAObj;
-                    }
-                    else
-                    {
-                        string tAObj = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pAObj).Take(pBObj - pAObj).ToArray()).Replace("\n", "\r\n");
-                        textA.Text = tAObj;
-
-                        string tBObj = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pBObj).Take(pClearC - pBObj).ToArray()).Replace("\n", "\r\n");
-                        textB.Text = tBObj;
-                    }
-
-
-                    string tClearC = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pClearC).Take(pFailC - pClearC).ToArray()).Replace("\n", "\r\n");
-                    textClear.Text = tClearC;
-
-                    string tFailC = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pFailC).Take(pEmp - pFailC).ToArray()).Replace("\n", "\r\n");
-                    textFail.Text = tFailC;
-
-                    string tEmp = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pEmp).Take(pText - pEmp).ToArray()).Replace("\n", "\r\n");
-                    textEmp.Text = tEmp;
-
-                    string tText = Encoding.GetEncoding("Shift_JIS").GetString(listData.Skip(pText).Take(byteData.Length - pText).ToArray()).Replace("\n", "\r\n");
-                    textText.Text = tText;
-
-                    //Misc
-                    numDifficulty.Value = listData[4];
-                    numQuestID.Value = BitConverter.ToUInt16(byteData, 46);
-                    numFee.Value = BitConverter.ToInt16(byteData, 12);
-                    numMR.Value = BitConverter.ToInt32(byteData, 16);
-                    numAR.Value = BitConverter.ToInt32(byteData, 24);
-                    numBR.Value = BitConverter.ToInt32(byteData, 28);
-                    numMP.Value = BitConverter.ToInt32(byteData, 164);
-                    numAP.Value = BitConverter.ToInt32(byteData, 168);
-                    numBP.Value = BitConverter.ToInt32(byteData, 172);
-                    numReqHR.Value = BitConverter.ToInt32(byteData, 74);
-                    numReqHR2.Value = BitConverter.ToInt32(byteData, 78);
-                    List.ItemID.TryGetValue(BitConverter.ToInt16(byteData, 176), out string Item1);
-                    List.ItemID.TryGetValue(BitConverter.ToInt16(byteData, 178), out string Item2);
-                    List.ItemID.TryGetValue(BitConverter.ToInt16(byteData, 180), out string Item3);
-                    textItem1.Text = Item1;
-                    textItem2.Text = Item2;
-                    textItem3.Text = Item3;
-                    comCourse.SelectedIndex = listData[6];
-                    numTime.Value = BitConverter.ToInt32(byteData, 32) / 30;
-
-                    numUnk1.Value = byteData[150];
-                    numUnk2.Value = byteData[151];
-                    numUnk3.Value = byteData[152];
-                    numUnk4.Value = byteData[153];
-
-                    List.MapID.TryGetValue(BitConverter.ToInt16(byteData, 36), out string map);
-                    textMap.Text = map;
                 }
             }
         }
@@ -563,6 +578,9 @@ namespace mhf_questlists_reader
                         File.WriteAllBytes(savePath, data.ToArray());
                     }
                     ManageLogs($"List files were successfully exported to {folderName}.");
+                    listBox2.SelectedIndex = 0;
+                    listBox1.SelectedIndex = 0;
+                    isPending = true;
                 }
             }
         }
@@ -626,7 +644,7 @@ namespace mhf_questlists_reader
                 numQuestCount.Value = count;
                 numTotal.Value = numTotal.Value - 1;
                 //SelectedQuestChanged();
-                ManageLogs($"Memoved a quest from list. Current count is {count}.");
+                ManageLogs($"Removed a quest from list. Current count is {count}.");
 
                 //when there's 0 quest
                 if (listBox1.Items.Count == 0)
@@ -1199,6 +1217,42 @@ namespace mhf_questlists_reader
             {
                 List.ItemID.TryGetValue((int)numTargetIDB.Value, out string itemName);
                 textTargetB.Text = itemName;
+            }
+        }
+
+        private void textTargetM_TextChanged(object sender, EventArgs e)
+        {
+            if (comQuestTypeM.SelectedIndex != 8)
+            {
+                numTargetIDM.Value = List.MonsterID.FirstOrDefault(x => x.Value == textTargetM.Text).Key;
+            }
+            else
+            {
+                numTargetIDM.Value = List.ItemID.FirstOrDefault(x => x.Value == textTargetM.Text).Key;
+            }
+        }
+
+        private void textTargetA_TextChanged(object sender, EventArgs e)
+        {
+            if (comQuestTypeA.SelectedIndex != 8)
+            {
+                numTargetIDA.Value = List.MonsterID.FirstOrDefault(x => x.Value == textTargetA.Text).Key;
+            }
+            else
+            {
+                numTargetIDA.Value = List.ItemID.FirstOrDefault(x => x.Value == textTargetA.Text).Key;
+            }
+        }
+
+        private void textTargetB_TextChanged(object sender, EventArgs e)
+        {
+            if (comQuestTypeB.SelectedIndex != 8)
+            {
+                numTargetIDB.Value = List.MonsterID.FirstOrDefault(x => x.Value == textTargetB.Text).Key;
+            }
+            else
+            {
+                numTargetIDB.Value = List.ItemID.FirstOrDefault(x => x.Value == textTargetB.Text).Key;
             }
         }
     }
