@@ -64,7 +64,7 @@ Don't forget to drop `Stored_Data` folder to the same path where exe created.
 
 ## v1.4.1
 - Add name suggestion to both Monster and Item name box.
-- Fixed a problem where pressing the Open button would clear the listbox regardless of whether you actually selected the questlist folder or not (in case you accidentally pressed the button).
-- Fixed a problem with the quest list box behaving incorrectly after pressing the Export button.
+- Fixed a problem where pressing the `Open` button would clear the listbox regardless of whether you actually selected the questlist folder or not (in case you accidentally pressed the button).
+- Fixed a problem with the quest listbox behaving incorrectly after pressing the `Export` button.
 - Fixed a problem in which the name and ID in the target field did not match when a quest was selected.
 
