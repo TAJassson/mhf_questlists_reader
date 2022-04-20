@@ -2,6 +2,9 @@ mhf_questlists_reader is a c# form that allows you to manage questlist files.
 
 I'm sorry for so much bugs.
 
+# Todo
+- Load more values such as Equipments, skills, limitation etc.
+
 # Before you use
 Below are some important tips for using this repo. Please read them at least once.  
 - My reader may not read publicly shared questlist files correctly because it does not have proper structure. Also I don't recommend you to keep using it as it is because the reader doesn't support it for a technical reason. Here's how to fix it.   
@@ -13,9 +16,9 @@ Open `list_168.bin` with binary editor(eg.HxD) and check offset 01h. It's a numb
 
 - You should decrypt quest file itself with a tool called `ReFrontier` before you use `Add` button.
 - Each questlist files are able to contain up to 42 quests.
-- While you can add new quest to list, you cannot add new list file via editor. Thus, I recommend you not to delete all quests from one of list files. I mean leave at least one quest in list.
-- `Export` button creates new questlist files, and overwrites if there is one there with the same name files.
-- Save change option has not yet implemented.
+- While you can add new quest to list, you cannot add new list file via editor. Thus, I recommend you not to delete all quests from one of list files. I mean leave at least one quest in list.  
+- `Export` button creates new questlist files, and overwrites if there is one there with the same name files.  
+- `Save change` button is used to save current selected quest changes.  
 
 # Known issues
 - Sometimes `Delete` button doesn't work correctly.
@@ -53,3 +56,8 @@ Changed to form is resizable.
 
 ## v1.3.1
 Fixed few small things.
+
+## v1.4
+Added `Save changes` button to save current selected quest changes.  
+Added textbox to show Map name.  
+Added combobox to show monsters and items name and its ID.  
