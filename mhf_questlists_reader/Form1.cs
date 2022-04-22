@@ -557,11 +557,14 @@ namespace mhf_questlists_reader
                                 }
                                 else
                                 {
-                                    string endData = File.ReadLines(fileEnd).ElementAt(y);
-                                    for (int t = 0; t < endData.Length / 2; t++)
-                                    {
-                                        endData1.Add(Convert.ToByte(endData.Substring(t * 2, 2), 16));
-                                    }
+                                    //string endData = File.ReadLines(fileEnd).ElementAt(y);
+                                    //for (int t = 0; t < endData.Length / 2; t++)
+                                    //{
+                                    //    endData1.Add(Convert.ToByte(endData.Substring(t * 2, 2), 16));
+                                    //}
+                                    // 08 95 CF 8C B6 96 9C 89 BB 0D 5D 32 D2 00 00
+                                    byte[] by = { 26, 131, 110, 131, 147, 131, 94, 129, 91, 143, 148, 140, 78, 130, 214, 138, 180, 142, 211, 130, 240, 141, 158, 130, 223, 130, 196, 29, 93, 48, 210, 0, 0 };
+                                    endData1 = by.ToList();
                                 }
                                 data.AddRange(endData1);
                             }
