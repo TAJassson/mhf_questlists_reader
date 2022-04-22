@@ -68,5 +68,5 @@ Don't forget to drop `Stored_Data` folder to the same path where exe created.
 - Fixed a problem with the quest listbox behaving incorrectly after pressing the `Export` button.
 - Fixed a problem in which the name and ID in the target field did not match when a quest was selected.
 
-## v1.4.1
+## v1.4.2
 - Fixed a problem in which the quest list was not loaded all the way through in the game when the export button was pressed once, then a new quest was added, and the export button was pressed again.
