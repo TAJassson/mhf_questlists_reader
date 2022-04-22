@@ -29,35 +29,42 @@ Don't forget to drop `Stored_Data` folder to the same path where exe created.
 # Changelog
 
 ## v 1.0
-Initial release.
+- Initial release.
 
 ## v1.1
-Added montser icon names, for Diva quest.  
-Fixed Diva quest load issue.
+- Added montser icon names, for Diva quest.  
+- Fixed Diva quest load issue.
 
 ## v1.1.1
-Fixed header type issue.
+- Fixed header type issue.
 
 ## v1.1.2
-Added panel and scrollbar to information section.
+- Added panel and scrollbar to information section.
 
 ## v1.2
-Now load entire questlist folder, not each single file.  
-Added new listbox to show loaded file name.  
-Added a label at the bottom of the form that works like a log.  
-Added `Stored_Data` folder to store binary data. Don't delete this.
+- Now load entire questlist folder, not each single file.  
+- Added new listbox to show loaded file name.  
+- Added a label at the bottom of the form that works like a log.  
+- Added `Stored_Data` folder to store binary data. Don't delete this.
 
 ## v1.3
-Added `Export` button to create and export new questlist files.  
-Added `Add` button to add a new quest to current selected list.  
-Added `Delete` button to delete selected quest from list.  
-Added 2 boxed to show how many quests you've loaded.  
-Changed to form is resizable.
+- Added `Export` button to create and export new questlist files.  
+- Added `Add` button to add a new quest to current selected list.  
+- Added `Delete` button to delete selected quest from list.  
+- Added 2 boxed to show how many quests you've loaded.  
+- Changed to form is resizable.
 
 ## v1.3.1
-Fixed few small things.
+- Fixed few small things.
 
 ## v1.4
-Added `Save changes` button to save current selected quest changes.  
-Added textbox to show Map name.  
-Added combobox to show monsters and items name and its ID.  
+- Added `Save changes` button to save current selected quest changes.  
+- Added textbox to show Map name.  
+- Added combobox to show monsters and items name and its ID.  
+
+## v1.4.1
+- Add name suggestion to both Monster and Item name box.
+- Fixed a problem where pressing the `Open` button would clear the listbox regardless of whether you actually selected the questlist folder or not (in case you accidentally pressed the button).
+- Fixed a problem with the quest listbox behaving incorrectly after pressing the `Export` button.
+- Fixed a problem in which the name and ID in the target field did not match when a quest was selected.
+
